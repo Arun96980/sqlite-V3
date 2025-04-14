@@ -20,6 +20,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pysbd
 from sklearn.metrics.pairwise import cosine_similarity
 from itertools import islice
+from fastapi import FastAPI, HTTPException, status, Header
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import List
+from contextlib import asynccontextmanager
+from typing import Optional, List, Dict, Any  # Add this with other imports
 
 # -----------------------------
 # Configuration & Constants
@@ -34,6 +40,8 @@ DEFAULT_FAISS_CANDIDATES = 80
 DEFAULT_TOP_K = 5
 HYBRID_ALPHA = 0.7 # Weight for semantic score in RAGRetriever hybrid score
 RRF_K = 60 # Constant for Reciprocal Rank Fusion
+API_PORT = 8000
+API_HOST = "0.0.0.0"
 
 # -----------------------------
 # Logging configuration
@@ -788,7 +796,7 @@ class KeywordSearcher:
                         # If text is valid, proceed to create the result dictionary
                         # Use .get() for other fields for robustness
                         results.append({
-                            'text': sentence_text, # Use the validated, non-empty text
+                            'text': item['sentence_text'], # Use the validated, non-empty text
                             'source': item.get('file', 'Unknown'),
                             'sentence_hash': item.get('sentence_hash', 'N/A'),
                             'faiss_id': item.get('faiss_id', -1),
@@ -1199,6 +1207,159 @@ def display_results_with_feedback(results, query):
         print("-" * 20)
 
 
+
+# -----------------------------
+# Pydantic Models
+# -----------------------------
+class SearchRequest(BaseModel):
+    query: str
+    top_k: int = DEFAULT_TOP_K
+    rerank: bool = True
+
+class SearchResult(BaseModel):
+    text: str
+    source: str
+    score: float
+    explanation: Optional[str] = None
+    justification: Optional[str] = None
+    sentence_hash: Optional[str] = None  # Add missing optional fields
+    faiss_id: Optional[int] = None
+    sources: Optional[List[str]] = None
+
+class FeedbackRequest(BaseModel):
+    query: str
+    sentence_hash: str
+    is_relevant: bool
+
+class SystemStatus(BaseModel):
+    status: str
+    version: str = "1.0.0"
+    index_count: int
+    db_path: str
+    model: str
+
+# -----------------------------
+# FastAPI Lifespan Management
+# -----------------------------
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Manage application lifecycle"""
+    # Initialize global components
+    global model, retriever, keyword_searcher, aiohttp_session
+    
+    logger.info("Initializing application components...")
+    
+    # Initialize database
+    await initialize_database(DEFAULT_DB_PATH)
+    
+    # Load sentence transformer model
+    model = SentenceTransformer(DEFAULT_MODEL)
+    
+    # Initialize search components
+    retriever = RAGRetriever(DEFAULT_INDEX_PATH, DEFAULT_DB_PATH, model)
+    keyword_searcher = KeywordSearcher(DEFAULT_DB_PATH)
+    
+    # Fit TF-IDF models
+    await asyncio.gather(
+        retriever.fit_tfidf(),
+        keyword_searcher.fit()
+    )
+    
+    # Create aiohttp session
+    aiohttp_session = aiohttp.ClientSession()
+    
+    yield  # Application is running
+    
+    # Cleanup resources
+    logger.info("Cleaning up resources...")
+    if aiohttp_session:
+        await aiohttp_session.close()
+
+# Initialize FastAPI app
+app = FastAPI(
+    title="Resume Search API",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# -----------------------------
+# API Endpoints
+# -----------------------------
+@app.post("/search", response_model=List[SearchResult])
+async def api_search(
+    request: SearchRequest,
+    x_api_key: Optional[str] = Header(None, alias="X-API-Key")
+):
+    """Perform hybrid search across resumes"""
+    try:
+        # Get API key from headers, request, or environment
+        api_key = x_api_key or request.api_key or os.environ.get("GOOGLE_API_KEY")
+        
+        if request.rerank and not api_key:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="API key is required for LLM reranking"
+            )
+
+        results = await hybrid_search(
+            session=aiohttp_session,
+            query=request.query,
+            retriever=retriever,
+            keyword_searcher=keyword_searcher,
+            api_key=api_key,
+            endpoint="https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent",
+            db_path=DEFAULT_DB_PATH,
+            top_k=request.top_k,
+            rerank_with_llm=request.rerank
+        )
+        return results
+    
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        logger.error(f"Search failed: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Search operation failed"
+        )
+
+@app.post("/feedback")
+async def api_feedback(feedback: FeedbackRequest):
+    """Submit relevance feedback for search results"""
+    try:
+        save_feedback(
+            query=feedback.query,
+            sentence_hash=feedback.sentence_hash,
+            is_relevant=feedback.is_relevant
+        )
+        return {"status": "feedback recorded"}
+    
+    except Exception as e:
+        logger.error(f"Feedback failed: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Feedback recording failed"
+        )
+
+@app.get("/status", response_model=SystemStatus)
+async def api_status():
+    """Get system status and statistics"""
+    return {
+        "status": "OK",
+        "index_count": retriever.index.ntotal if retriever and retriever.index else 0,
+        "db_path": DEFAULT_DB_PATH,
+        "model": DEFAULT_MODEL
+    }
+
+
 # -----------------------------
 # Main Asynchronous Function
 # -----------------------------
@@ -1385,10 +1546,13 @@ async def main():
 
 if __name__ == "__main__":
     # Run the main asynchronous function
-    try:
+    parser = argparse.ArgumentParser(description="Resume Search Engine")
+    parser.add_argument("--api", action="store_true", help="Run as an API server")
+    args = parser.parse_args()
+
+    if args.api:
+        import uvicorn
+        uvicorn.run(app, host=API_HOST, port=API_PORT)
+    else:
         asyncio.run(main())
-    except KeyboardInterrupt:
-        print("\nInterrupted by user. Exiting.")
-    except Exception as e:
-         # Log any top-level exceptions that weren't caught in main()
-         logger.exception("A critical error occurred:")
+    

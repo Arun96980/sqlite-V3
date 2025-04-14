@@ -4,3 +4,8 @@
 {"query": "java folks", "sentence_hash": "d7e2e46bb0c975f79a1d7ef9f2d24af98b865b27", "is_relevant": true, "timestamp": "2025-04-13T18:23:34.353882"}
 {"query": "java folks", "sentence_hash": "a7bc59ae2faa5273314eb444bb174d82060a50b0", "is_relevant": true, "timestamp": "2025-04-13T18:23:59.015715"}
 {"query": "folks with aws certifications", "sentence_hash": "054205497593390137d5f9232b7fc32177012a34", "is_relevant": true, "timestamp": "2025-04-13T18:41:20.128844"}
+{"query": "hadoop experienced folks", "sentence_hash": "a274a6dc465309d7e66c6ca57dca78ff1015678e", "is_relevant": true, "timestamp": "2025-04-14T11:18:06.868466"}
+{"query": "hadoop experienced folks", "sentence_hash": "a274a6dc465309d7e66c6ca57dca78ff1015678e", "is_relevant": true, "timestamp": "2025-04-14T11:18:08.837482"}
+{"query": "hadoop experienced folks", "sentence_hash": "9e9f7c17fd3dd4f66d4f64e181adf8cbf605a560", "is_relevant": true, "timestamp": "2025-04-14T11:18:24.959535"}
+{"query": "plsql developers", "sentence_hash": "609332cc7bbf366157c51531a44b0e40c2236f16", "is_relevant": true, "timestamp": "2025-04-14T11:35:42.032915"}
+{"query": "hadoop developers", "sentence_hash": "7f48d508f2cb213c245240c502aa05f479cf9437", "is_relevant": true, "timestamp": "2025-04-14T12:11:20.625482"}

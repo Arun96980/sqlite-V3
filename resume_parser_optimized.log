@@ -1759,3 +1759,389 @@ EOFError
 2025-04-13 19:06:38,718 - INFO - [fit] - KeywordSearcher TF-IDF fitted on 46944 sentences.
 2025-04-13 19:06:39,197 - INFO - [fit_tfidf] - TF-IDF fitted on 46944 sentences.
 2025-04-13 19:06:39,198 - INFO - [main] - Search components initialized and TF-IDF fitted.
+2025-04-14 00:25:37,880 - ERROR - [main] - An error occurred during the search loop:
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 1293, in main
+    async def api_search(
+                          
+EOFError
+2025-04-14 00:33:04,293 - INFO - [lifespan] - Initializing application components...
+2025-04-14 00:33:04,299 - INFO - [initialize_database] - Database initialized at resume_engine.db
+2025-04-14 00:33:04,300 - INFO - [__init__] - Load pretrained SentenceTransformer: intfloat/e5-large
+2025-04-14 00:33:10,225 - INFO - [__init__] - Use pytorch device_name: cpu
+2025-04-14 00:33:10,229 - INFO - [fit_tfidf] - Fitting TF-IDF vectorizer for RAGRetriever...
+2025-04-14 00:33:10,231 - INFO - [fit] - Fitting TF-IDF for KeywordSearcher...
+2025-04-14 00:33:11,896 - INFO - [fit] - KeywordSearcher TF-IDF fitted on 46944 sentences.
+2025-04-14 00:33:12,504 - INFO - [fit_tfidf] - TF-IDF fitted on 46944 sentences.
+2025-04-14 00:39:27,928 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 00:39:28,330 - INFO - [load_index] - RAGRetriever loaded FAISS index with 46944 vectors.
+2025-04-14 00:40:00,464 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 00:40:00,465 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 00:40:00,465 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 00:40:00,500 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 00:40:00,504 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 00:40:00,508 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 00:40:00,512 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 00:40:00,516 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 00:40:00,516 - INFO - [score_relevance_with_llm] - Running 5 LLM scoring tasks concurrently...
+2025-04-14 00:40:01,076 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:01,076 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:01,079 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:01,080 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:01,103 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:01,104 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,361 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:02,362 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,362 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:02,364 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,365 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 00:40:02,366 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:40:02,378 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:40:02,391 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:40:02,407 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:40:02,419 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:40:02,432 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 5
+2025-04-14 00:40:02,433 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 00:40:02,763 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:02,765 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,765 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:02,767 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,768 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:02,769 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,770 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:02,771 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,781 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:40:02,783 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:40:02,785 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 00:50:22,450 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 00:50:51,725 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 00:50:51,726 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 00:50:51,727 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 00:50:51,732 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 00:50:51,734 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 00:50:51,738 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 00:50:51,740 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 00:50:51,744 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 00:50:51,745 - INFO - [score_relevance_with_llm] - Running 5 LLM scoring tasks concurrently...
+2025-04-14 00:50:52,504 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:52,505 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:52,545 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:52,546 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:52,743 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:52,744 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:53,851 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:53,852 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:53,853 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:53,855 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:53,856 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 00:50:53,856 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:50:54,083 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:50:54,101 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:50:54,117 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:50:54,132 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 00:50:54,146 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 5
+2025-04-14 00:50:54,147 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 00:50:54,572 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:54,573 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:54,574 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:54,575 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:54,576 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:54,576 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:54,578 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:54,578 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:54,579 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:50:54,581 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:50:54,584 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 00:51:15,840 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 00:51:44,929 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 00:51:44,931 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 00:51:44,931 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 00:51:44,935 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 00:51:44,938 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 00:51:44,942 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 00:51:44,944 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 00:51:44,947 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 00:51:44,948 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 5
+2025-04-14 00:51:44,948 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 00:51:45,427 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:51:45,428 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:51:45,435 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:51:45,437 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:51:45,471 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:51:45,472 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:51:46,736 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:51:46,737 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:51:46,738 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 00:51:46,738 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 00:51:46,740 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 00:55:46,761 - INFO - [lifespan] - Cleaning up resources...
+2025-04-14 00:55:58,415 - INFO - [lifespan] - Initializing application components...
+2025-04-14 00:55:58,420 - INFO - [initialize_database] - Database initialized at resume_engine.db
+2025-04-14 00:55:58,421 - INFO - [__init__] - Load pretrained SentenceTransformer: intfloat/e5-large
+2025-04-14 00:56:03,856 - INFO - [__init__] - Use pytorch device_name: cpu
+2025-04-14 00:56:03,859 - INFO - [fit_tfidf] - Fitting TF-IDF vectorizer for RAGRetriever...
+2025-04-14 00:56:03,861 - INFO - [fit] - Fitting TF-IDF for KeywordSearcher...
+2025-04-14 00:56:05,451 - INFO - [fit] - KeywordSearcher TF-IDF fitted on 46944 sentences.
+2025-04-14 00:56:06,090 - INFO - [fit_tfidf] - TF-IDF fitted on 46944 sentences.
+2025-04-14 00:59:38,083 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 00:59:38,256 - INFO - [load_index] - RAGRetriever loaded FAISS index with 46944 vectors.
+2025-04-14 01:00:11,367 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 01:00:11,368 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 01:00:11,369 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 01:00:11,374 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 01:00:11,378 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 01:00:11,381 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 01:00:11,384 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 01:00:11,387 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 01:00:11,388 - INFO - [score_relevance_with_llm] - Running 5 LLM scoring tasks concurrently...
+2025-04-14 01:00:12,050 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:12,051 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:12,053 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:12,054 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:12,054 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:12,055 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:12,055 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:12,057 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:12,058 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:12,059 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:12,060 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 01:00:12,061 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:00:12,294 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:00:12,314 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:00:12,327 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:00:12,338 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:00:12,350 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 5
+2025-04-14 01:00:12,351 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 01:00:13,073 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:13,074 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:13,075 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:13,076 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:13,076 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:13,077 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:13,077 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:13,078 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:13,080 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:00:13,080 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:00:13,081 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 01:02:42,125 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 01:03:13,500 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 01:03:13,501 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 01:03:13,501 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 01:03:13,506 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 01:03:13,509 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 01:03:13,513 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 01:03:13,516 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 01:03:13,519 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 01:03:13,520 - INFO - [score_relevance_with_llm] - Running 5 LLM scoring tasks concurrently...
+2025-04-14 01:03:13,901 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:13,902 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:13,931 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:13,933 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,138 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,149 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,149 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,150 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,151 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,152 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,154 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 01:03:15,154 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:03:15,166 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:03:15,178 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:03:15,189 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:03:15,200 - WARNING - [score_relevance_with_llm] - Could not parse LLM score '[LLM HTTP Error: 404]'. Defaulting to 0.0. Error: could not convert string to float: '[LLM HTTP Error: 404]'
+2025-04-14 01:03:15,211 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 5
+2025-04-14 01:03:15,212 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 01:03:15,482 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,483 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,485 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,486 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,499 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,500 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,508 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,510 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,511 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:03:15,511 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:03:15,513 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 01:13:36,835 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 01:14:07,662 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 01:14:07,663 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 01:14:07,663 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 01:14:07,667 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 01:14:07,671 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 01:14:07,674 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 01:14:07,677 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 01:14:07,681 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 01:14:07,681 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 5
+2025-04-14 01:14:07,682 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 01:14:08,134 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:14:08,135 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:14:08,368 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:14:08,368 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:14:09,199 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:14:09,200 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:14:09,208 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:14:09,210 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:14:09,244 - ERROR - [google_text_generation] - ❌ HTTP Error during Google LLM call: 404 Not Found
+2025-04-14 01:14:09,246 - ERROR - [google_text_generation] - Could not read error body: Connection closed
+2025-04-14 01:14:09,247 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 01:15:01,321 - INFO - [lifespan] - Initializing application components...
+2025-04-14 01:15:01,326 - INFO - [initialize_database] - Database initialized at resume_engine.db
+2025-04-14 01:15:01,326 - INFO - [__init__] - Load pretrained SentenceTransformer: intfloat/e5-large
+2025-04-14 01:15:06,565 - INFO - [__init__] - Use pytorch device_name: cpu
+2025-04-14 01:15:06,569 - INFO - [fit_tfidf] - Fitting TF-IDF vectorizer for RAGRetriever...
+2025-04-14 01:15:06,571 - INFO - [fit] - Fitting TF-IDF for KeywordSearcher...
+2025-04-14 01:15:07,867 - INFO - [fit] - KeywordSearcher TF-IDF fitted on 46944 sentences.
+2025-04-14 01:15:08,527 - INFO - [fit_tfidf] - TF-IDF fitted on 46944 sentences.
+2025-04-14 01:15:19,260 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 01:15:19,401 - INFO - [load_index] - RAGRetriever loaded FAISS index with 46944 vectors.
+2025-04-14 01:15:52,624 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 01:15:52,625 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 01:15:52,626 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 01:15:52,631 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 01:15:52,635 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 01:15:52,638 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 01:15:52,642 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 01:15:52,646 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 01:15:52,647 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 5
+2025-04-14 01:15:52,647 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 01:15:57,619 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 01:16:39,682 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 01:17:08,918 - INFO - [hybrid_search] - Retrieved 12 vector results and 12 keyword results.
+2025-04-14 01:17:08,919 - INFO - [hybrid_search] - Fused results count: 12
+2025-04-14 01:17:08,920 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 01:17:08,924 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016666666666666666, 'sources': ['keyword']}
+2025-04-14 01:17:08,927 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.01639344262295082, 'sources': ['keyword']}
+2025-04-14 01:17:08,930 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.016129032258064516, 'sources': ['keyword']}
+2025-04-14 01:17:08,934 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015873015873015872, 'sources': ['keyword']}
+2025-04-14 01:17:08,938 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015625, 'sources': ['keyword']}
+2025-04-14 01:17:08,941 - WARNING - [score_relevance_with_llm] - ⚠️ Skipping candidate missing required keys: {'score': 0.015384615384615385, 'sources': ['keyword']}
+2025-04-14 01:17:08,942 - INFO - [score_relevance_with_llm] - Running 6 LLM scoring tasks concurrently...
+2025-04-14 01:17:11,044 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 01:17:11,135 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 6
+2025-04-14 01:17:11,137 - INFO - [hybrid_search] - Generating 6 justifications...
+2025-04-14 01:17:14,738 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 01:17:38,425 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 01:18:07,214 - INFO - [hybrid_search] - Retrieved 12 vector results and 12 keyword results.
+2025-04-14 01:18:07,215 - INFO - [hybrid_search] - Fused results count: 12
+2025-04-14 01:18:07,216 - INFO - [hybrid_search] - Skipping LLM re-ranking.
+2025-04-14 01:19:12,440 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 01:19:41,538 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 01:19:41,539 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 01:19:41,540 - INFO - [hybrid_search] - Skipping LLM re-ranking.
+2025-04-14 10:59:17,065 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 10:59:42,319 - INFO - [hybrid_search] - Retrieved 10 vector results and 10 keyword results.
+2025-04-14 10:59:42,321 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 10:59:42,322 - INFO - [hybrid_search] - Skipping LLM re-ranking.
+2025-04-14 11:13:55,869 - INFO - [lifespan] - Cleaning up resources...
+2025-04-14 11:14:09,137 - INFO - [lifespan] - Initializing application components...
+2025-04-14 11:14:09,143 - INFO - [initialize_database] - Database initialized at resume_engine.db
+2025-04-14 11:14:09,144 - INFO - [__init__] - Load pretrained SentenceTransformer: intfloat/e5-large
+2025-04-14 11:14:15,623 - INFO - [__init__] - Use pytorch device_name: cpu
+2025-04-14 11:14:15,628 - INFO - [fit_tfidf] - Fitting TF-IDF vectorizer for RAGRetriever...
+2025-04-14 11:14:15,629 - INFO - [fit] - Fitting TF-IDF for KeywordSearcher...
+2025-04-14 11:14:17,093 - INFO - [fit_tfidf] - TF-IDF fitted on 46944 sentences.
+2025-04-14 11:14:17,697 - INFO - [fit] - KeywordSearcher TF-IDF fitted on 46944 sentences.
+2025-04-14 11:14:24,444 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 11:14:24,464 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 11:14:24,745 - INFO - [load_index] - RAGRetriever loaded FAISS index with 46944 vectors.
+2025-04-14 11:14:56,224 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 11:14:56,225 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 11:14:56,226 - INFO - [hybrid_search] - Skipping LLM re-ranking.
+2025-04-14 11:15:13,344 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 11:15:13,382 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 11:15:43,648 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 11:15:43,649 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 11:15:43,649 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 11:15:43,710 - INFO - [score_relevance_with_llm] - Running 5 LLM scoring tasks concurrently...
+2025-04-14 11:15:46,016 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 11:15:46,087 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 10
+2025-04-14 11:15:46,088 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 11:15:50,946 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 11:17:24,172 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 11:17:24,202 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 11:17:51,471 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 11:17:51,471 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 11:17:51,472 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 11:17:51,495 - INFO - [score_relevance_with_llm] - Running 10 LLM scoring tasks concurrently...
+2025-04-14 11:17:52,797 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 11:17:52,930 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 10
+2025-04-14 11:17:52,931 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 11:17:56,181 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 11:18:51,387 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 11:18:51,423 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 11:19:19,037 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 11:19:19,038 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 11:19:19,039 - INFO - [hybrid_search] - Skipping LLM re-ranking.
+2025-04-14 11:32:47,178 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 11:32:47,212 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 11:33:14,596 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 11:33:14,597 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 11:33:14,598 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 11:33:14,634 - INFO - [score_relevance_with_llm] - Running 10 LLM scoring tasks concurrently...
+2025-04-14 11:33:16,761 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 11:33:16,875 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 10
+2025-04-14 11:33:16,875 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 11:33:20,761 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 11:34:17,769 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 11:34:17,799 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 11:34:47,314 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 11:34:47,315 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 11:34:47,316 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 11:34:47,339 - INFO - [score_relevance_with_llm] - Running 10 LLM scoring tasks concurrently...
+2025-04-14 11:34:49,564 - INFO - [score_relevance_with_llm] - LLM scoring tasks complete.
+2025-04-14 11:34:49,697 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 10
+2025-04-14 11:34:49,698 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 11:34:52,887 - INFO - [hybrid_search] - Justification generation complete.
+2025-04-14 12:09:35,162 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 12:09:35,207 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 12:10:05,764 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 12:10:05,765 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 12:10:05,766 - INFO - [hybrid_search] - Skipping LLM re-ranking.
+2025-04-14 12:10:33,340 - INFO - [hybrid_search] - Performing hybrid retrieval...
+2025-04-14 12:10:33,372 - ERROR - [search] - Keyword search failed unexpectedly: 'sentence_text'
+Traceback (most recent call last):
+  File "E:\AI Model\sqlite V3\main.py", line 799, in search
+    'text': item['sentence_text'], # Use the validated, non-empty text
+            ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'sentence_text'
+2025-04-14 12:11:03,910 - INFO - [hybrid_search] - Retrieved 10 vector results and 0 keyword results.
+2025-04-14 12:11:03,911 - INFO - [hybrid_search] - Fused results count: 10
+2025-04-14 12:11:03,911 - INFO - [hybrid_search] - Starting LLM re-ranking...
+2025-04-14 12:11:03,951 - INFO - [hybrid_search] - LLM re-ranking complete. Candidates count: 10
+2025-04-14 12:11:03,952 - INFO - [hybrid_search] - Generating 5 justifications...
+2025-04-14 12:11:09,074 - INFO - [hybrid_search] - Justification generation complete.
